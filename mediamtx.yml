@@ -1,0 +1,34 @@
+# MediaMTX Configuration for Real-Time Vehicle Analytics Pipeline
+# Ingestion: RTSP stream at rtsp://localhost:8554/traffic
+# Bonus WebRTC: http://localhost:8889/traffic
+# Bonus HLS: http://localhost:8888/traffic
+
+logLevel: info
+logDestinations: [stdout]
+
+# RTSP Configuration
+rtsp: yes
+rtspAddress: :8554
+protocols: [tcp, udp]
+
+# RTMP Configuration
+rtmp: yes
+rtmpAddress: :1935
+
+# HLS Configuration (HTTP Live Streaming for React UI)
+hls: yes
+hlsAddress: :8888
+hlsSegmentCount: 3
+hlsSegmentDuration: 1s
+
+# WebRTC Configuration (Low-latency browser playback)
+webrtc: yes
+webrtcAddress: :8889
+webrtcAllowOrigins: ["*"]
+
+# Stream Paths
+paths:
+  traffic:
+    source: publisher
+    runOnInit: ""
+    runOnDemand: ""
